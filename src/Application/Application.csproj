@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
+    <PackageReference Include="Novell.Directory.Ldap.NETStandard" Version="3.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\Almacen\" />
+    <Folder Include="DTOs\Sgp\" />
+    <Folder Include="Interfaces\IRepositories\Almacen\" />
+    <Folder Include="Interfaces\IRepositories\Sgp\" />
+    <Folder Include="Interfaces\IServices\Almacen\" />
+    <Folder Include="Interfaces\IServices\Sgp\" />
+    <Folder Include="Services\Almacen\" />
+    <Folder Include="Services\Sgp\" />
+  </ItemGroup>
+
+</Project>

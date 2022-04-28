@@ -13,7 +13,7 @@ using System.Security.Claims;
 namespace WebApi.Controllers.almacen
 {
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class MarcasController : ControllerBase
     {
@@ -38,7 +38,7 @@ namespace WebApi.Controllers.almacen
         [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Get(long codigo)
         {
-            var datos = await _marcasService.BuscarPorNumSec(codigo);    
+            var datos = await _marcasService.BuscarPorNumSec(codigo);
             var respuesta = new RespuestaCore()
             {
                 status = Status.Success,
@@ -52,8 +52,8 @@ namespace WebApi.Controllers.almacen
         [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Post([FromBody] Marcas marcas)
         {
-            string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
-            marcas.nsec_usuario_registro = long.Parse(nsecUsuario);
+            // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
+            // marcas.nsec_usuario_registro = long.Parse(nsecUsuario);
             var respuestaBD = await _marcasService.Guardar(marcas);
             if (respuestaBD.status == Status.Error)
             {
@@ -72,8 +72,8 @@ namespace WebApi.Controllers.almacen
         [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Put([FromBody] Marcas marcas)
         {
-            string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
-            marcas.nsec_usuario_registro = long.Parse(nsecUsuario);
+            // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
+            // marcas.nsec_usuario_registro = long.Parse(nsecUsuario);
             var respuestaBD = await _marcasService.Modificar(marcas);
             if (respuestaBD.status == Status.Error)
             {
@@ -93,9 +93,9 @@ namespace WebApi.Controllers.almacen
         [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Delete(long codigo)
         {
-            string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
+            // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
             var marcas = await _marcasService.BuscarPorNumSec(codigo);
-            marcas.nsec_usuario_registro = long.Parse(nsecUsuario);
+            // marcas.nsec_usuario_registro = long.Parse(nsecUsuario);
             var respuestaBD = await _marcasService.Eliminar(marcas);
             if (respuestaBD.status == Status.Error)
             {

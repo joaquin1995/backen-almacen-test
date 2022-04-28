@@ -1,10 +1,8 @@
 ﻿using Application.Interfaces.IServices.Administracion;
 using Application.Interfaces.IServices.almacen;
-using Application.Interfaces.IServices.Sgp;
 using Application.Services.Administracion;
 using Application.Services.Administracion.Login;
 using Application.Services.almacen;
-using Application.Services.Sgp;
 
 namespace WebApi.Ioc
 {
@@ -24,7 +22,8 @@ namespace WebApi.Ioc
             //services.AddTransient<IMenuService, MenuService>();
             //services.AddTransient<ICantonService, CantonService> ();
             services.AddTransient<ICategoriasService, CategoriasService>();
-
+            services.AddTransient<IClientesService, ClientesService>();
+            services.AddTransient<IDetalleIngresosService, DetalleIngresosService>();
 
             return services;
         }

@@ -13,7 +13,7 @@ using System.Security.Claims;
 namespace WebApi.Controllers.almacen
 {
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class ClientesController : ControllerBase
     {
@@ -26,7 +26,7 @@ namespace WebApi.Controllers.almacen
 
         // GET: api/Clientes
         [HttpGet]
-        [Authorize(Roles = Roles.Administrador)]
+        //[Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Get(string? valor, string? parametro, int numeroPagina, int cantidadMostrar)
         {
             var respuestaListado = await _clientesService.BuscarListado(valor, parametro, numeroPagina, cantidadMostrar);
@@ -35,10 +35,10 @@ namespace WebApi.Controllers.almacen
 
         // GET api/Clientes/5
         [HttpGet("{codigo}")]
-        [Authorize(Roles = Roles.Administrador)]
+        //[Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Get(long codigo)
         {
-            var datos = await _clientesService.BuscarPorNumSec(codigo);    
+            var datos = await _clientesService.BuscarPorNumSec(codigo);
             var respuesta = new RespuestaCore()
             {
                 status = Status.Success,
@@ -49,11 +49,11 @@ namespace WebApi.Controllers.almacen
 
         // POST api/Clientes
         [HttpPost]
-        [Authorize(Roles = Roles.Administrador)]
+        //[Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Post([FromBody] Clientes clientes)
         {
-            string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
-            clientes.nsec_usuario_registro = long.Parse(nsecUsuario);
+            // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
+            // clientes.nsec_usuario_registro = long.Parse(nsecUsuario);
             var respuestaBD = await _clientesService.Guardar(clientes);
             if (respuestaBD.status == Status.Error)
             {
@@ -69,11 +69,11 @@ namespace WebApi.Controllers.almacen
 
         // PUT api/Clientes
         [HttpPut]
-        [Authorize(Roles = Roles.Administrador)]
+        //[Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Put([FromBody] Clientes clientes)
         {
-            string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
-            clientes.nsec_usuario_registro = long.Parse(nsecUsuario);
+            // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
+            // clientes.nsec_usuario_registro = long.Parse(nsecUsuario);
             var respuestaBD = await _clientesService.Modificar(clientes);
             if (respuestaBD.status == Status.Error)
             {
@@ -90,12 +90,12 @@ namespace WebApi.Controllers.almacen
 
         // DELETE api/Clientes/5
         [HttpDelete("{codigo}")]
-        [Authorize(Roles = Roles.Administrador)]
+        //[Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Delete(long codigo)
         {
-            string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
+            // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
             var clientes = await _clientesService.BuscarPorNumSec(codigo);
-            clientes.nsec_usuario_registro = long.Parse(nsecUsuario);
+            // clientes.nsec_usuario_registro = long.Parse(nsecUsuario);
             var respuestaBD = await _clientesService.Eliminar(clientes);
             if (respuestaBD.status == Status.Error)
             {

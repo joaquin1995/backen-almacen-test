@@ -13,7 +13,7 @@ using System.Security.Claims;
 namespace WebApi.Controllers.almacen
 {
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class VentasController : ControllerBase
     {
@@ -38,7 +38,7 @@ namespace WebApi.Controllers.almacen
         [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Get(long codigo)
         {
-            var datos = await _ventasService.BuscarPorNumSec(codigo);    
+            var datos = await _ventasService.BuscarPorNumSec(codigo);
             var respuesta = new RespuestaCore()
             {
                 status = Status.Success,
@@ -52,8 +52,8 @@ namespace WebApi.Controllers.almacen
         [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Post([FromBody] Ventas ventas)
         {
-            string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
-            ventas.nsec_usuario_registro = long.Parse(nsecUsuario);
+            // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
+            // ventas.nsec_usuario_registro = long.Parse(nsecUsuario);
             var respuestaBD = await _ventasService.Guardar(ventas);
             if (respuestaBD.status == Status.Error)
             {
@@ -72,8 +72,8 @@ namespace WebApi.Controllers.almacen
         [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Put([FromBody] Ventas ventas)
         {
-            string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
-            ventas.nsec_usuario_registro = long.Parse(nsecUsuario);
+            // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
+            // ventas.nsec_usuario_registro = long.Parse(nsecUsuario);
             var respuestaBD = await _ventasService.Modificar(ventas);
             if (respuestaBD.status == Status.Error)
             {
@@ -93,9 +93,9 @@ namespace WebApi.Controllers.almacen
         [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Delete(long codigo)
         {
-            string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
+            // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
             var ventas = await _ventasService.BuscarPorNumSec(codigo);
-            ventas.nsec_usuario_registro = long.Parse(nsecUsuario);
+            // ventas.nsec_usuario_registro = long.Parse(nsecUsuario);
             var respuestaBD = await _ventasService.Eliminar(ventas);
             if (respuestaBD.status == Status.Error)
             {

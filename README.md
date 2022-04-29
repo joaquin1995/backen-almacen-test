@@ -13,3 +13,11 @@
 * [PostgreSQL](https://www.postgresql.org/)
 * [FluentValidation](https://fluentvalidation.net/)
 
+## Swagger
+
+* [swagger](http://localhost:5030/swagger/index.html)
+
+
+
+
+

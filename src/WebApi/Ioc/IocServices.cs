@@ -28,6 +28,8 @@ namespace WebApi.Ioc
             services.AddTransient<IProductosService, ProductosService>();
             services.AddTransient<IIngresosService, IngresosService>();
             services.AddTransient<IDetalleIngresosService, DetalleIngresosService>();
+            services.AddTransient<IVentasService, VentasService>();
+            services.AddTransient<IDetalleVentasService, DetalleVentasService>();
 
             return services;
         }

@@ -11,7 +11,7 @@ using System.Security.Claims;
 namespace WebApi.Controllers.Administracion
 {
     [Route("api/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class MenuController : ControllerBase
     {
@@ -22,12 +22,12 @@ namespace WebApi.Controllers.Administracion
             _menuService = menuService;
         }
         [Route("traer_menu_por_usuario")]
-        [Authorize]
+        // [Authorize]
         [HttpGet]
         public async Task<ActionResult> TraerMenuPorUsuario()
         {
 
-            var cuenta = User!.FindFirst(ClaimTypes.NameIdentifier)!.Value;
+            var cuenta = "mjcortez";
             var datos = await _menuService.TraerMenuPorUsuario(0, cuenta, "");
             var respuesta = new RespuestaCore()
             {

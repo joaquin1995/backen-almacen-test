@@ -19,7 +19,7 @@ namespace WebApi.Ioc
             //    .AddScoped<ILoginService, LoginActiveDirectoryService>(s => s.GetService<LoginActiveDirectoryService>()!);
 
 
-            //services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<IMenuService, MenuService>();
             //services.AddTransient<ICantonService, CantonService> ();
             services.AddTransient<ICategoriasService, CategoriasService>();
             services.AddTransient<IClientesService, ClientesService>();

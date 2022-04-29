@@ -61,7 +61,7 @@ builder.Services.Configure<LoginOption>(
 
 builder.Services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
         builder
-        .WithOrigins("http://localhost:4200", "http://10.10.54.189:4200", "*")
+        .WithOrigins("http://localhost:4200", "http://10.10.54.9:4200", "*")
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials()));

@@ -9,18 +9,19 @@ using Domain.Models.almacen;
 namespace Application.Services.almacen
 {
 
-    public class ProductosService : GenericService<Productos>,  IProductosService
+    public class ProductosService : GenericService<Productos>, IProductosService
     {
         private readonly IProductosRepository _productosRepository;
 
-        public ProductosService(IProductosRepository productosRepository): base(productosRepository)
+        public ProductosService(IProductosRepository productosRepository) : base(productosRepository)
         {
             _productosRepository = productosRepository;
         }
 
-        public async Task<RespuestaListado<ProductosDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar)
+        public async Task<RespuestaListado<ProductosListadoDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar)
         {
-            var respuestaListado = new RespuestaListado<ProductosDto>(){
+            var respuestaListado = new RespuestaListado<ProductosListadoDto>()
+            {
                 response = await _productosRepository.BuscarListado(valor, parametro, numeroPagina, cantidadMostrar),
                 status = Status.Success
             };

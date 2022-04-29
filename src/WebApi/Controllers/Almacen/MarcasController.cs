@@ -26,7 +26,7 @@ namespace WebApi.Controllers.almacen
 
         // GET: api/Marcas
         [HttpGet]
-        [Authorize(Roles = Roles.Administrador)]
+        // [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Get(string? valor, string? parametro, int numeroPagina, int cantidadMostrar)
         {
             var respuestaListado = await _marcasService.BuscarListado(valor, parametro, numeroPagina, cantidadMostrar);
@@ -35,7 +35,7 @@ namespace WebApi.Controllers.almacen
 
         // GET api/Marcas/5
         [HttpGet("{codigo}")]
-        [Authorize(Roles = Roles.Administrador)]
+        // [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Get(long codigo)
         {
             var datos = await _marcasService.BuscarPorNumSec(codigo);
@@ -49,7 +49,7 @@ namespace WebApi.Controllers.almacen
 
         // POST api/Marcas
         [HttpPost]
-        [Authorize(Roles = Roles.Administrador)]
+        // [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Post([FromBody] Marcas marcas)
         {
             // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
@@ -69,7 +69,7 @@ namespace WebApi.Controllers.almacen
 
         // PUT api/Marcas
         [HttpPut]
-        [Authorize(Roles = Roles.Administrador)]
+        // [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Put([FromBody] Marcas marcas)
         {
             // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;
@@ -90,7 +90,7 @@ namespace WebApi.Controllers.almacen
 
         // DELETE api/Marcas/5
         [HttpDelete("{codigo}")]
-        [Authorize(Roles = Roles.Administrador)]
+        // [Authorize(Roles = Roles.Administrador)]
         public async Task<ActionResult> Delete(long codigo)
         {
             // string nsecUsuario = User!.FindFirst(ClaimTypes.Sid)!.Value;

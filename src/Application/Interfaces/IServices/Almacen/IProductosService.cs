@@ -7,6 +7,6 @@ namespace Application.Interfaces.IServices.almacen
 {
     public interface IProductosService : IGenericService<Productos>
     {
-        public Task<RespuestaListado<ProductosDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar);
+        public Task<RespuestaListado<ProductosListadoDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar);
     }
 }

@@ -16,11 +16,11 @@ namespace Infrastructure.Repositories.almacen
             _applicationDbContext = applicationDbContext;
         }
 
-        public async Task<IEnumerable<ProductosDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar)
+        public async Task<IEnumerable<ProductosListadoDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar)
         {
             try
             {
-                IEnumerable<ProductosDto>? arrayDatos = new ProductosDto[] { };
+                IEnumerable<ProductosListadoDto>? arrayDatos = new ProductosListadoDto[] { };
                 string nombreFuncion = "sp_listado_productos";
 
                 Hashtable parametros = new Hashtable();
@@ -29,7 +29,7 @@ namespace Infrastructure.Repositories.almacen
                 parametros.Add("numeropaginaactual", numeroPagina);
                 parametros.Add("cantidadmostrar", cantidadMostrar);
 
-                arrayDatos = await _applicationDbContext.TraerArrayObjeto<ProductosDto>(nombreFuncion, parametros);
+                arrayDatos = await _applicationDbContext.TraerArrayObjeto<ProductosListadoDto>(nombreFuncion, parametros);
 
                 return arrayDatos;
 

@@ -13,8 +13,10 @@ namespace WebApi.Ioc
         {
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<ICategoriasRepository, CategoriasRepository>();
+            services.AddTransient<IMarcasRepository, MarcasRepository>();
             services.AddTransient<IClientesRepository, ClientesRepository>();
             services.AddTransient<IDetalleIngresosRepository, DetalleIngresosRepository>();
+            services.AddTransient<IProductosRepository, ProductosRepository>();
             //services.AddTransient<ILoginRepository, LoginRepository>();
             //services.AddTransient<ICantonRepository,CantonRepository>();
             services.AddTransient<IMenuRepository, MenuRepository>();

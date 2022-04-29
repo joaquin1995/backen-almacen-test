@@ -4,8 +4,8 @@ using Domain.Models.almacen;
 
 namespace Application.Interfaces.IRepositories.almacen
 {
-    public interface IDetalleIngresosRepository: IGenericRepository<DetalleIngresos>
+    public interface IDetalleIngresosRepository : IGenericRepository<DetalleIngresos>
     {
-        public Task<IEnumerable<DetalleIngresosDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar);
+        public Task<IEnumerable<DetalleIngresosListadoDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar);
     }
 }

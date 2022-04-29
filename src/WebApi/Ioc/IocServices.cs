@@ -19,13 +19,15 @@ namespace WebApi.Ioc
             //    .AddScoped<ILoginService, LoginActiveDirectoryService>(s => s.GetService<LoginActiveDirectoryService>()!);
 
 
-            services.AddTransient<IMenuService, MenuService>();
+            // services.AddTransient<IMenuService, MenuService>();
             //services.AddTransient<ICantonService, CantonService> ();
             services.AddTransient<ICategoriasService, CategoriasService>();
             services.AddTransient<IClientesService, ClientesService>();
             services.AddTransient<IDetalleIngresosService, DetalleIngresosService>();
             services.AddTransient<IMarcasService, MarcasService>();
             services.AddTransient<IProductosService, ProductosService>();
+            services.AddTransient<IIngresosService, IngresosService>();
+            services.AddTransient<IDetalleIngresosService, DetalleIngresosService>();
 
             return services;
         }

@@ -17,9 +17,11 @@ namespace WebApi.Ioc
             services.AddTransient<IClientesRepository, ClientesRepository>();
             services.AddTransient<IDetalleIngresosRepository, DetalleIngresosRepository>();
             services.AddTransient<IProductosRepository, ProductosRepository>();
+            services.AddTransient<IIngresosRepository, IngresosRepository>();
+            services.AddTransient<IDetalleIngresosRepository, DetalleIngresosRepository>();
             //services.AddTransient<ILoginRepository, LoginRepository>();
             //services.AddTransient<ICantonRepository,CantonRepository>();
-            services.AddTransient<IMenuRepository, MenuRepository>();
+            // services.AddTransient<IMenuRepository, MenuRepository>();
 
 
             return services;

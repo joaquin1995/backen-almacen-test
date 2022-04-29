@@ -16,11 +16,11 @@ namespace Infrastructure.Repositories.almacen
             _applicationDbContext = applicationDbContext;
         }
 
-        public async Task<IEnumerable<DetalleIngresosDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar)
+        public async Task<IEnumerable<DetalleIngresosListadoDto>> BuscarListado(string? valor, string? parametro, int numeroPagina, int cantidadMostrar)
         {
             try
             {
-                IEnumerable<DetalleIngresosDto>? arrayDatos = new DetalleIngresosDto[] { };
+                IEnumerable<DetalleIngresosListadoDto>? arrayDatos = new DetalleIngresosListadoDto[] { };
                 string nombreFuncion = "sp_listado_detalle_ingresos";
 
                 Hashtable parametros = new Hashtable();
@@ -29,7 +29,7 @@ namespace Infrastructure.Repositories.almacen
                 parametros.Add("numeropaginaactual", numeroPagina);
                 parametros.Add("cantidadmostrar", cantidadMostrar);
 
-                arrayDatos = await _applicationDbContext.TraerArrayObjeto<DetalleIngresosDto>(nombreFuncion, parametros);
+                arrayDatos = await _applicationDbContext.TraerArrayObjeto<DetalleIngresosListadoDto>(nombreFuncion, parametros);
 
                 return arrayDatos;
 

@@ -12,7 +12,22 @@ namespace Domain.Models.almacen
         public string? num_comprobante { get; set; }
         public decimal impuesto { get; set; }
         public decimal total_ingresos { get; set; }
-        [JsonIgnore]
+        public string? estado { get; set; }
+
+    }
+
+    public class IngresosListado
+    {
+        public long num_sec { get; set; }
+        public long nsec_proveedor { get; set; }
+        public string? proveedor { get; set; }
+        public long nsec_ususario { get; set; }
+        public string? usuario { get; set; }
+        public string? tipo_comprobante { get; set; }
+        public string? serie_comprobante { get; set; }
+        public string? num_comprobante { get; set; }
+        public decimal impuesto { get; set; }
+        public decimal total_ingresos { get; set; }
         public string? estado { get; set; }
 
     }
